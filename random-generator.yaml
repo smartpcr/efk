@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-generator
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: random-generator
+  template:
+    metadata:
+      labels:
+        app: random-generator
+    spec:
+      containers:
+      - name: random-generator
+        image: chriscmsoft/random-generator:latest
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "100m"
